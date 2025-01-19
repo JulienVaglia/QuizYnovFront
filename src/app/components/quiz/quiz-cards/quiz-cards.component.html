@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        @for (quiz of quizzes; track quiz.id) {
+        <div class="card shadow  m-5 text-center" style="width: 18rem;" type="button" data-bs-toggle="modal"
+            [attr.data-bs-target]="'#descriptionModal' + quiz.id">
+            <div class="card-body">
+                <h4 class="card-title">{{ quiz.name }}</h4>
+                <h6 class="card-subtitle mb-2 text-body-secondary">Catégorie : {{ quiz.category.name }}</h6>
+            </div>
+        </div>
+        }
+    </div>
+
+    <!-- Modals -->
+    @for (quiz of quizzes; track quiz.id) {
+    <div class="modal fade" [id]="'descriptionModal' + quiz.id" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-slideout">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">{{ quiz.name }}</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="text-secondary">Catégorie : {{ quiz.category.name }}</h6>
+                    <p>{{ quiz.description }}</p>
+                    <p><strong>Difficulté :</strong> {{ quiz.difficulty }}</p>
+                    <p><strong>Date de création :</strong> {{ quiz.createdAt | date:'medium' }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>
