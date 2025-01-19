@@ -1,0 +1,28 @@
+<!-- <div class="container mt-4">
+    <h2 class="text-center">Quiz</h2>
+    <form #quizForm="ngForm">
+        @for ( question of questions; track question.id) {
+          <div class="question-card shadow p-4 mb-4 bg-light rounded">
+            <h4>{{ question.text }}</h4>
+      
+            @for (answer of answers.filter(a => a.questionId === question.id); track answer.id) {
+              <div class="form-check">
+                <input 
+                  class="form-check-input" 
+                  type="radio" 
+                  [name]="'question' + question.id" 
+                  [id]="answer.id" 
+                  [value]="answer.index" 
+                  [(ngModel)]="selectedAnswers[question.id]"
+                >
+                <label class="form-check-label" [for]="answer.id">
+                  {{ answer.text }}
+                </label>
+              </div>
+            }
+          </div>
+        }
+      
+        <button type="button" class="btn btn-primary mt-3" (click)="submitQuiz()">Soumettre</button>
+      </form>
+</div> -->

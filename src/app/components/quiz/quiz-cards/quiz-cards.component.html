@@ -1,11 +1,15 @@
+<h2 class="ms-5 mt-2 mb-5">Quizs actuellement disponible :</h2>
+
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
         @for (quiz of quizzes; track quiz.id) {
-        <div class="card shadow  m-5 text-center" style="width: 18rem;" type="button" data-bs-toggle="modal"
-            [attr.data-bs-target]="'#descriptionModal' + quiz.id">
-            <div class="card-body">
-                <h4 class="card-title">{{ quiz.name }}</h4>
-                <h6 class="card-subtitle mb-2 text-body-secondary">Catégorie : {{ quiz.category.name }}</h6>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mb-4">
+            <div class="card shadow text-center" style="width: 18rem;" type="button" data-bs-toggle="modal"
+                [attr.data-bs-target]="'#descriptionModal' + quiz.id">
+                <div class="card-body">
+                    <h4 class="card-title">{{ quiz.name }}</h4>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Catégorie : {{ quiz.category.name }}</h6>
+                </div>
             </div>
         </div>
         }
@@ -25,6 +29,10 @@
                     <p>{{ quiz.description }}</p>
                     <p><strong>Difficulté :</strong> {{ quiz.difficulty }}</p>
                     <p><strong>Date de création :</strong> {{ quiz.createdAt | date:'medium' }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" [routerLink]="['quizQuestions', quiz.id]">Commencer ce
+                        Quiz</button>
                 </div>
             </div>
         </div>

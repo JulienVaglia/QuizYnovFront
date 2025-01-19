@@ -3,7 +3,7 @@ import { Answer } from "./answer"
 export interface QuestionDto {
     id: string,
     text: string,
-    answer: Answer,
+    answer: string[],
     correctAnswerIndex: number,
     quizId: string
 }
