@@ -1,28 +1,40 @@
-<!-- <div class="container mt-4">
-    <h2 class="text-center">Quiz</h2>
-    <form #quizForm="ngForm">
-        @for ( question of questions; track question.id) {
-          <div class="question-card shadow p-4 mb-4 bg-light rounded">
-            <h4>{{ question.text }}</h4>
-      
-            @for (answer of answers.filter(a => a.questionId === question.id); track answer.id) {
-              <div class="form-check">
-                <input 
-                  class="form-check-input" 
-                  type="radio" 
-                  [name]="'question' + question.id" 
-                  [id]="answer.id" 
-                  [value]="answer.index" 
-                  [(ngModel)]="selectedAnswers[question.id]"
-                >
-                <label class="form-check-label" [for]="answer.id">
-                  {{ answer.text }}
-                </label>
-              </div>
-            }
-          </div>
+<div class="container mt-4">
+    <h2 class="text-center mb-5">{{ quiz?.name }}</h2>
+    <form #quizForm="ngForm" class="mb-4">
+  
+      <!-- Boucle sur les questions -->
+      @for (question of questions; track question.id) {
+      <div class="question-card shadow p-4 mb-4 bg-light rounded">
+        <h4>{{ question.text }}</h4>
+  
+        <!-- Boucle sur les réponses -->
+        @for (answer of question.answers; track $index) {
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            [name]="'question_' + question.id"
+            [id]="'answer_' + question.id + '_' + $index"
+            [value]="$index"
+            (change)="onAnswerSelected(question.id, $index)"
+            [checked]="selectedAnswers[question.id] === $index"
+          >
+          <label class="form-check-label" [for]="'answer_' + question.id + '_' + $index">
+            {{ answer }}
+          </label>
+        </div>
         }
-      
-        <button type="button" class="btn btn-primary mt-3" (click)="submitQuiz()">Soumettre</button>
-      </form>
-</div> -->
+      </div>
+      }
+  
+      <!-- Bouton de soumission -->
+      <button
+        type="button"
+        class="btn btn-primary mt-3"
+        (click)="submitQuiz()"
+      >
+        Soumettre
+      </button>
+    </form>
+  </div>
+  

@@ -31,7 +31,7 @@
                     <p><strong>Date de création :</strong> {{ quiz.createdAt | date:'medium' }}</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" [routerLink]="['quizQuestions', quiz.id]">Commencer ce
+                    <button type="button" class="btn btn-primary" [routerLink]="['quizQuestions', quiz.id]" (click)="closeModal()">Commencer ce
                         Quiz</button>
                 </div>
             </div>

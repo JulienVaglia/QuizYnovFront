@@ -15,4 +15,8 @@ export class QuizServiceService {
     return this.http.get<QuizDto[]>( environment.API_Url + 'quiz')
   }
 
+  public getQuizzById(quizId: string): Observable<QuizDto> {
+    return this.http.get<QuizDto>( environment.API_Url + 'quiz/' + quizId)
+  }
+
 }

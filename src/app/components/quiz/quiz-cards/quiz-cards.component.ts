@@ -34,4 +34,18 @@ export class QuizCardsComponent  implements OnInit{
     })
   }
 
+  //Permet de fermer la modal avant de basculer sur la nouvelle fenetre pour eviter un conflit d'état avec la modal
+  closeModal() {
+    const modal = document.querySelector('.modal'); // Sélectionne la modal active
+    if (modal) {
+      (modal as any).classList.remove('show'); // Supprime la classe "show"
+      document.body.classList.remove('modal-open'); // Supprime la classe du body
+      document.body.style.overflow = 'auto'; // Réactive le défilement si désactivé
+      const backdrop = document.querySelector('.modal-backdrop');
+      if (backdrop) {
+        backdrop.remove(); // Supprime le backdrop
+      }
+    }
+  }
+
 }
