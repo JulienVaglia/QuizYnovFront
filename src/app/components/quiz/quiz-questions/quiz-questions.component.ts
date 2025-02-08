@@ -76,7 +76,7 @@ export class QuizQuestionsComponent implements OnInit {
     let correctAnswersCount = 0;
 
     // Compare chaque réponse sélectionnée avec l'index de la bonne réponse
-    this.questions.forEach((question) => {
+    this.questions.forEach((question: QuestionDto) => {
       if (this.selectedAnswers[question.id] === question.correctAnswerIndex) {
         correctAnswersCount++;
       }
@@ -84,14 +84,12 @@ export class QuizQuestionsComponent implements OnInit {
 
     // Calcule le score final sur 5 car 5 questions par Quiz
     this.score = correctAnswersCount;
-    
+
     // Calcule le pourcentage de réussite
-  const percentage = Math.round((correctAnswersCount / this.questions.length) * 100);
+    const percentage = Math.round((correctAnswersCount / this.questions.length) * 100);
 
-  console.log(`Score : ${this.score} / ${this.questions.length} (${percentage}%)`);
-
-  // Affiche un message avec le score et le pourcentage
-  alert(`Votre score est de ${this.score} / ${this.questions.length} soit : ${percentage}% de réussite`);
+    // Affiche un message avec le score et le pourcentage
+    alert(`Votre score est de ${this.score} / ${this.questions.length} soit : ${percentage}% de réussite`);
   }
 
 }
